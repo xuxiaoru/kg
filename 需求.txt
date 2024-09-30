@@ -10,7 +10,7 @@
 给定角色
 
 文章推荐:链接预测
-公开数据集:wiki-cs  cora 
+公开数据集:wiki-cs  cora  CiteSeer  PubMed
 图表示算法: deepwalk  node2vec
 node2vec在公开数据集表现好，链接预测任务、节点预测任务表现好
 f1  auc
@@ -25,8 +25,8 @@ f1  auc
 cora  wiki-cs
 2、图嵌入模型选型
   deepwalk  node2vec
-重点   transX系列/rotatE
-重点   deepRicci
+        重点   transX系列/rotatE
+       重点   deepRicci
   kg-bert/simkgc
   rpa/amie/lerp
 几种图表示自监督算法对数据试算
@@ -35,14 +35,15 @@ cora  wiki-cs
 2.1、图结构嵌入
 试算基础模型:transX  RotateE  DeepRicci
 场景:给定两个实体，预测是否存在r关系
-     给定头实体或尾实体，再给定某个关系，预测未知的头实体或尾实体
-     给定三元组，预测真或假
+        给定头实体或尾实体，再给定某个关系，预测未知的头实体或尾实体
+       给定三元组，预测真或假
 参考: 
-1、夸克链接，知识图谱导论 陈钧华
+1、夸克链接
 2、hppts://githup.com/thunlp/openke
 
 2.2 节点的属性相似度试算(文本的匹配: 名称、描述、说明+属性规则的匹配)
 文本相似度的服务
+属性的文本嵌入
 
 2.3 文本表征复杂模型试算(把关系三元组的文本信息引入)
 1、调用文本相似度接口，对节点的属性描述字段进行嵌入
