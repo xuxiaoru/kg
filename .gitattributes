@@ -1,0 +1,2 @@
+*.rar filter=lfs diff=lfs merge=lfs -text
+03_checkpoint/01_openKE/checkpoint.rar filter=lfs diff=lfs merge=lfs -text
