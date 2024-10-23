@@ -1,0 +1,48 @@
+要使用 `networkx` 的 `graph_edit_distance` 函数计算两张图的编辑距离，并设置 `node_match` 参数以基于节点属性“活动名称”的 top-1 匹配，可以按照以下步骤实现：
+
+```python
+import networkx as nx
+
+def node_match_activity_name(node1, node2):
+    # 使用节点属性活动名称进行匹配
+    return node1['活动名称'] == node2['活动名称']
+
+def calculate_edit_distance(graph1, graph2):
+    # 计算编辑距离
+    edit_distance = nx.graph_edit_distance(graph1, graph2, node_match=node_match_activity_name)
+
+    # 检查匹配情况
+    matched_nodes = set(graph1.nodes()).intersection(set(graph2.nodes()))
+    
+    if not matched_nodes:
+        # 如果没有匹配的节点，返回节点数加边数
+        return len(graph1.nodes) + len(graph1.edges)
+    
+    return edit_distance
+
+# 示例图构建
+G1 = nx.Graph()
+G1.add_nodes_from([
+    (1, {"活动名称": "A"}),
+    (2, {"活动名称": "B"}),
+])
+G1.add_edges_from([(1, 2)])
+
+G2 = nx.Graph()
+G2.add_nodes_from([
+    (3, {"活动名称": "C"}),
+    (4, {"活动名称": "D"}),
+])
+G2.add_edges_from([(3, 4)])
+
+# 计算编辑距离
+distance = calculate_edit_distance(G1, G2)
+print(f"编辑距离: {distance}")
+```
+
+### 代码说明：
+1. **node_match_activity_name**：定义了一个函数用于比较两个节点的“活动名称”属性。
+2. **calculate_edit_distance**：调用 `nx.graph_edit_distance`，并将 `node_match` 设置为自定义的匹配函数。如果没有匹配的节点，则返回节点数加边数。
+3. **示例图构建**：构建两张示例图 `G1` 和 `G2`，并计算它们的编辑距离。
+
+确保在运行这段代码之前已经安装了 `networkx` 库。希望这个实现能满足你的需求！
